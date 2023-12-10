@@ -82,6 +82,24 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    // signingConfigs {
+    //     release {
+    //     storeFile file('production.keystore')
+    //     storePassword '0723500'
+    //     keyAlias 'prod'
+    //     keyPassword '0723500'
+
+    //     // storePassword System.console().readLine("\nKeystore password:")
+    //     // keyAlias System.console().readLine("\nAlias: ")
+    //     // keyPassword System.console().readLine("\nAlias password: ")
+    //     }
+    // }
+    // buildTypes {
+    //     release {
+    //     signingConfig signingConfigs.release
+    //     }
+
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -109,6 +127,8 @@ dependencies {
     implementation("com.facebook.react:react-android")
     implementation("com.facebook.react:flipper-integration")
 
+    implementation project(':react-native-vector-icons')
+
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
@@ -116,4 +136,5 @@ dependencies {
     }
 }
 
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
