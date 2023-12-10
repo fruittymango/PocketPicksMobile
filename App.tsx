@@ -5,34 +5,20 @@
  * @format
  */
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
-  Button,
-  Pressable,
-  SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Dimensions,
-  FlatList,
   useWindowDimensions,
 } from 'react-native';
-import type {StatusBarStyle, TextStyle, ViewStyle, ImageStyle} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator, BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Home from './src/Screens/Home';
-import Profile from './src/Screens/Profile';
 import MyList from './src/Screens/UserList';
 
 import { Tab, Colors } from './src/Models';
-
-const {height} = Dimensions.get('screen');
 
 function App(): React.JSX.Element {
   const {height, width} = useWindowDimensions();
@@ -65,15 +51,6 @@ function App(): React.JSX.Element {
               ),
             }}
           />
-          
-          {/* <Tab.Screen name="Profile" component={Profile}
-            options={{
-              headerShown:false,
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons name="account" color={color} size={size} />
-              ),
-            }}
-          /> */}
         </Tab.Navigator>
       </NavigationContainer>
     </>
@@ -82,7 +59,6 @@ function App(): React.JSX.Element {
 
 const styles = StyleSheet.create({
   tabContainer:{
-    height: 0.08*height,
     paddingVertical:5,
     paddingBottom:10,
     backgroundColor:Colors.secondaryBgColor,
