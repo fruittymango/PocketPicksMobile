@@ -1,6 +1,5 @@
 declare module 'react-native-config' {
     export interface NativeConfig {
-        HOSTNAME?: string;
         API_KEY?:string;
     }
     
