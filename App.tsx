@@ -23,6 +23,16 @@ import { Tab, Colors } from './src/Models';
 function App(): React.JSX.Element {
   const {height, width} = useWindowDimensions();
 
+  const styles = StyleSheet.create({
+    tabContainer:{
+      paddingVertical:5,
+      paddingBottom:10,
+      backgroundColor:Colors.secondaryBgColor,
+      borderColor: Colors.secondaryBgColor,
+      height: height>width? 0.08*height:0.08*width,
+    }
+  });
+
   return (
     <>
       <StatusBar backgroundColor={Colors.primaryBgColor} />
@@ -31,7 +41,7 @@ function App(): React.JSX.Element {
           initialRouteName="Home" 
           screenOptions={{
             tabBarActiveTintColor: Colors.activeButtonBgColor,
-            tabBarStyle:{...styles.tabContainer, height: height>width? 0.08*height:0.08*width},
+            tabBarStyle: styles.tabContainer,
           }}>
 
           <Tab.Screen name="Home" component={Home}
@@ -56,14 +66,5 @@ function App(): React.JSX.Element {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  tabContainer:{
-    paddingVertical:5,
-    paddingBottom:10,
-    backgroundColor:Colors.secondaryBgColor,
-    borderColor: Colors.secondaryBgColor,
-  }
-});
 
 export default App;
