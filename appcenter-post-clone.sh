@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Get the API_KEY from the environment variables
-API_KEY=$API_KEY
+API_KEY=$PATH
 
 if [ -z "$API_KEY" ]; then
   echo "API_KEY is not defined in the environment variables."
