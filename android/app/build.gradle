@@ -81,6 +81,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        resValue "string", "build_config_package", "com.pocketpicks"
+
     }
 
     signingConfigs {
@@ -125,6 +127,8 @@ dependencies {
     implementation("com.facebook.react:react-android")
     implementation("com.facebook.react:flipper-integration")
 
+    implementation project(':react-native-config')
+
     implementation project(':react-native-vector-icons')
 
     if (hermesEnabled.toBoolean()) {
@@ -136,3 +140,5 @@ dependencies {
 
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
