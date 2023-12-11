@@ -84,22 +84,7 @@ android {
         versionName "1.0"
     }
 
-    // signingConfigs {
-    //     release {
-    //     storeFile file('production.keystore')
-    //     storePassword '0723500'
-    //     keyAlias 'prod'
-    //     keyPassword '0723500'
-
-    //     // storePassword System.console().readLine("\nKeystore password:")
-    //     // keyAlias System.console().readLine("\nAlias: ")
-    //     // keyPassword System.console().readLine("\nAlias password: ")
-    //     }
-    // }
-    // buildTypes {
-    //     release {
-    //     signingConfig signingConfigs.release
-    //     }
+    
 
     signingConfigs {
         debug {
