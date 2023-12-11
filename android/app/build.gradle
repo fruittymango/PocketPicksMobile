@@ -2,7 +2,6 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
-
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
@@ -84,7 +83,20 @@ android {
         versionName "1.0"
     }
 
-    
+    signingConfigs {
+        releaseSigningConfig {
+            storeFile file('production.keystore')
+            storePassword System.getProperty("APPCENTER_KEYSTORE_PASSWORD")
+            keyAlias System.getProperty("APPCENTER_KEY_ALIAS")
+            keyPassword System.getProperty("APPCENTER_KEY_PASSWORD")
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.releaseSigningConfig
+        }
+    }
 
     signingConfigs {
         debug {
@@ -114,7 +126,6 @@ dependencies {
     implementation("com.facebook.react:flipper-integration")
 
     implementation project(':react-native-vector-icons')
-    implementation project(':react-native-config')
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
@@ -125,5 +136,3 @@ dependencies {
 
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
-apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
-
