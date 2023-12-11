@@ -1,4 +1,4 @@
-#!/#!/usr/bin/env bash
+#!/usr/bin/env bash
 
 # Get the API_KEY from the environment variables
 API_KEY=$API_KEY
