@@ -1,3 +1,5 @@
+import { createContext } from 'react';
+import {ViewStyle} from 'react-native';
 import { createBottomTabNavigator, BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 export const Colors = {
@@ -8,7 +10,67 @@ export const Colors = {
     primaryBgColor: '#0A1823',
     secondaryBgColor: '#222E3E',
 };
+
+export type CarouselProps = {
+    style?: ViewStyle;
+    CategoryItems?: Array<ICatergoryItem>;
+};
+
+export type BannerCarouselProps = {
+  style?: ViewStyle;
+  tv?:boolean;
+  movies?:boolean;
+};
+
+export type ModalCarouselProps = {
+    modalTitle: string;
+    modalContextItems: Array<ICatergoryItem> | [];
+    modalVisible: boolean;
+    setModalVisible: (value: boolean) => void;
+    setModalContextData: (value: ICatergoryItem) => void;
+    paginationHandler?:(value:number)=>void;
+  };
   
+export  type GenreCarouselProps = {
+    style?: ViewStyle;
+    catergory: string;
+};
+
+export type CatergoryItemModalContextType = {
+
+    modalContextData: ICatergoryItem | {};
+    setModalContextData: (value:ICatergoryItem) => void ;
+    modalVisible: boolean;
+    setModalVisible: (value:boolean)=>void;
+  
+    genre:string;
+    setGenre: (value: string) => void;
+    genreUrl: string;
+    setGenreUrl: (value: string) => void;
+    genreModalVisibility: boolean;
+    setGenreModalVisibility: (value:boolean) => void;
+  
+    modalTitle: string;
+    setModalTitle: (value: string) => void ;
+    modalContextItems: Array<ICatergoryItem> | [];
+    setModalContexItems: (value:Array<ICatergoryItem>) => void ;
+    viewAll: boolean;
+    setViewAll: (value:boolean)=>void;
+};
+
+export const CatergoryItemModalContext = createContext<CatergoryItemModalContextType | {}>({});
+
+export type TActiveTitle = {
+    title: string;
+    active?: boolean;
+  };
+  
+export type DropDownProps = {
+    list: Array<TActiveTitle>;
+    setList: (newList:Array<TActiveTitle>)=>void;
+    style?: ViewStyle;
+};
+   
 export const Tab = createBottomTabNavigator<RootStackParamList>();
 
 export type RootStackParamList = {
@@ -53,3 +115,9 @@ export interface ICache{
     favourites: Array<ICatergoryItem> | undefined;
     toWatchNext: Array<ICatergoryItem> | undefined;
 }
+
+export type ContentHeaderProps = {
+    style?: ViewStyle;
+    state: boolean;
+    handleState: (value: boolean)=>void; 
+};
